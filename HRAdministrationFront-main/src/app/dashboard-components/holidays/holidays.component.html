@@ -1,0 +1,48 @@
+<div class="holidays-container">
+    <div class="header">
+      <h2>Holidays</h2>
+      <button class="btn btn-add" (click)="toggleAddHoliday()">
+        {{ showAddHoliday ? 'Back to Holidays' : 'Add Holiday' }}
+      </button>
+    </div>
+  
+    <div *ngIf="showAddHoliday">
+      <app-add-holiday (closeAddHoliday)="onAddHolidayClose()"></app-add-holiday>
+    </div>
+  
+    <div *ngIf="showUpdateHoliday && holidayIdToUpdate !== undefined">
+      <app-update-holiday
+        [holidayId]="holidayIdToUpdate" 
+        (closeUpdateHoliday)="onUpdateHolidayClose()">
+      </app-update-holiday>
+    </div>
+  
+    <div *ngIf="!showAddHoliday && !showUpdateHoliday">
+      <table class="holidays-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let holiday of holidays">
+            <td data-label="ID">{{ holiday.id }}</td>
+            <td data-label="Name">{{ holiday.name }}</td>
+            <td data-label="Date">{{ holiday.date }}</td>
+            <td data-label="Actions" class="actions-column">
+              <button class="btn btn-update" (click)="toggleUpdateHoliday(holiday.id)">
+                <i class="feather icon-edit"></i>
+              </button>
+              <button class="btn btn-delete" (click)="deleteHoliday(holiday.id)">
+                <i class="feather icon-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

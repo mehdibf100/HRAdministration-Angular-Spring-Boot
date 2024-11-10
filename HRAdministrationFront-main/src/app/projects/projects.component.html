@@ -1,0 +1,45 @@
+<div class="projects-container">
+  <div class="header">
+    <h2>Projects</h2>
+    <button class="btn btn-add" (click)="toggleAddProject()">
+      {{ showAddProject ? 'Back to Projects' : 'Add Project' }}
+    </button>
+  </div>
+
+  <div *ngIf="showAddProject">
+    <app-add-project (closeAddProject)="onAddProjectClose()"></app-add-project>
+  </div>
+
+  <div *ngIf="showUpdateProject && projectIdToUpdate !== undefined">
+    <app-update-project 
+      [projectId]="projectIdToUpdate" 
+      (closeUpdateProject)="onUpdateProjectClose()">
+    </app-update-project>
+  </div>
+
+  <div *ngIf="!showAddProject && !showUpdateProject">
+    <table class="projects-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of projects">
+          <td data-label="ID">{{ project.id }}</td>
+          <td data-label="Name">{{ project.name }}</td>
+          <td data-label="Actions" class="actions-column">
+            <button class="btn btn-update" (click)="toggleUpdateProject(project.id)">
+              <i class="feather icon-edit"></i>
+            </button>
+            <button class="btn btn-delete" (click)="deleteProject(project.id)">
+              <i class="feather icon-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

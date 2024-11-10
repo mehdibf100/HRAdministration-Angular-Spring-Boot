@@ -1,0 +1,44 @@
+<app-nav-bar-menu-hr></app-nav-bar-menu-hr>
+<div class="body">
+  <div class="actualites">
+    <div class="actualites-title">
+      <p>News</p>
+    </div>
+    <div *ngFor="let announcement of announcements; let i = index" class="actualites-body">
+      <div class="calendar">
+        <div class="month">{{ announcement.date | date: 'MMM' }}</div>
+        <div class="day">{{ announcement.date | date: 'dd' }}</div>
+      </div>
+      <div class="announcement-details">
+        <p>{{ announcement.title }}</p>
+        <div class="expand-button">
+          <button (click)="toggleDetails(i)">
+            {{ expandedAnnouncements[i] ? 'Hide Details' : 'Show Details' }}
+          </button>
+        </div>
+        <div class="announcement-expansion" *ngIf="expandedAnnouncements[i]">
+          <img *ngIf="imageUrls[announcement.id]" [src]="imageUrls[announcement.id]" alt="Announcement Image" width="250">
+          <p>{{ announcement.description }}</p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="announcements.length === 0">
+      <p>No announcements available.</p>
+    </div>
+  </div>
+
+  <div class="profile">
+    <div class="img-profile">
+      <img *ngIf="profileImage" [src]="profileImage" alt="Profile Image">
+      <img *ngIf="!profileImage" width="250px" src="https://cognition.ens.fr/sites/cognition.ens.fr/files/styles/300x300/public/default_images/user-gen_0.png?itok=bmm9X_ff" alt="Default Image">
+    </div>
+    <div class="profile-body">
+      <h1>{{ user.lastname + ' ' + user.firstname }}</h1>
+      <h3>{{user.job}}</h3>
+      <h3>{{user.datejoined}}</h3>
+    </div>
+    <div class="footer-profile" [routerLink]="['/admin-hr-dashboard/profile']">
+      <a>Visit your profile</a>
+    </div>
+  </div>
+</div>

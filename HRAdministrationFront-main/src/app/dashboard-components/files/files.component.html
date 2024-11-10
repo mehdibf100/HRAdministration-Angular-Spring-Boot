@@ -1,0 +1,39 @@
+<div class="files-container">
+    <div class="header">
+      <h2>Files</h2>
+      <button class="btn btn-add" (click)="toggleUploadFile()">
+        {{ showUploadFile ? 'Back to Files' : 'Upload File' }}
+      </button>
+    </div>
+  
+    <div *ngIf="showUploadFile">
+      <app-upload-file (closeUploadFile)="onUploadFileClose()"></app-upload-file>
+    </div>
+  
+    <div *ngIf="!showUploadFile">
+      <table class="files-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Filename</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let file of files">
+            <td data-label="ID">{{ file.id }}</td>
+            <td data-label="Filename">{{ file.filename }}</td>
+            <td data-label="Actions" class="actions-column">
+              <button class="btn btn-download" (click)="downloadFile(file.filename)">
+                <i class="feather icon-download"></i>
+              </button>
+              <button class="btn btn-delete" (click)="deleteFile(file.filename)">
+                <i class="feather icon-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

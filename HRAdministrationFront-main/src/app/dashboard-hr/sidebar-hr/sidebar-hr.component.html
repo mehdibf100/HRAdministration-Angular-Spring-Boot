@@ -1,0 +1,26 @@
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
+    <div class="logo-container">
+        <button class="logo" (click)="toggleCollapse()">
+
+        <img class="myImg"  src="data:image/png;base64,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"/>
+        </button>
+        <div class="logo-text" @fadeInOut *ngIf="collapsed">Menu</div>
+        <button class="btn-close" @rotate *ngIf="collapsed" (click)="closeSidenav()">
+   <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+    </div>
+    <ul class="sidenav-nav">
+        <li class="sidenav-nav-item" *ngFor="let data of navData">
+            <a class="sidenav-nav-link" [routerLink]="[data.routeLink]"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"
+                (click)="onNavItemClicked(data.id)"
+            >
+                <i class="sidenav-link-icon" [class]="data.icon"></i>
+                <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
+                    {{data.label}}
+                </span>
+            </a>
+        </li>
+    </ul>
+  </div>

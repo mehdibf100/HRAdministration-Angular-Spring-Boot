@@ -1,0 +1,25 @@
+<app-nav-bar-menu-leave></app-nav-bar-menu-leave>
+<div class="cont">
+  <div class="MesLeave">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Reason</th>
+          <th scope="col">Start Date</th>
+          <th scope="col">End Date</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of leaves">
+          <th scope="row">{{ item.reason }}</th>
+          <td>{{ item.startDate }}</td>
+          <td>{{ item.endDate }}</td>
+          <td [ngClass]="getStatusClass(item.status)">
+            {{ item.status }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

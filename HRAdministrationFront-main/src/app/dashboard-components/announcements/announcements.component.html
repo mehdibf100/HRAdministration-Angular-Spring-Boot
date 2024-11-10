@@ -1,0 +1,53 @@
+<div class="announcements-container">
+  <div class="header">
+    <h2>Announcements</h2>
+    <button class="btn btn-add" (click)="toggleAddAnnouncement()">
+      {{ showAddAnnouncement ? 'Back to Announcements' : 'Add Announcement' }}
+    </button>
+  </div>
+
+  <div *ngIf="showAddAnnouncement">
+    <app-add-announcement (closeAddAnnouncement)="onAddAnnouncementClose()"></app-add-announcement>
+  </div>
+
+  <div *ngIf="showUpdateAnnouncement && announcementIdToUpdate !== undefined">
+    <app-update-announcement
+      [announcementId]="announcementIdToUpdate" 
+      (closeUpdateAnnouncement)="onUpdateAnnouncementClose()">
+    </app-update-announcement>
+  </div>
+
+  <div *ngIf="!showAddAnnouncement && !showUpdateAnnouncement">
+    <table class="announcements-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Date</th>
+          <th>Image</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let announcement of announcements">
+          <td data-label="ID">{{ announcement.id }}</td>
+          <td data-label="Title">{{ announcement.title }}</td>
+          <td data-label="Description">{{ announcement.description }}</td>
+          <td data-label="Date">{{ announcement.date }}</td>
+          <td data-label="Image">
+            <img *ngIf="imageUrls[announcement.id]" [src]="imageUrls[announcement.id]" alt="Announcement Image" width="100">
+          </td>
+          <td data-label="Actions" class="actions-column">
+            <button class="btn btn-update" (click)="toggleUpdateAnnouncement(announcement.id)">
+              <i class="feather icon-edit"></i>
+            </button>
+            <button class="btn btn-delete" (click)="deleteAnnouncement(announcement.id)">
+              <i class="feather icon-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="tasks-container">
+    <div class="header">
+      <h2>Tasks</h2>
+      <button class="btn btn-add" (click)="toggleAddTask()">
+        {{ showAddTask ? 'Back to Tasks' : 'Add Task' }}
+      </button>
+    </div>
+  
+    <div *ngIf="showAddTask">
+      <app-add-task (closeAddTask)="onAddTaskClose()"></app-add-task>
+    </div>
+  
+    <div *ngIf="showUpdateTask && taskIdToUpdate !== undefined">
+      <app-update-task
+        [taskId]="taskIdToUpdate"
+        (closeUpdateTask)="onUpdateTaskClose()">
+      </app-update-task>
+    </div>
+  
+    <div *ngIf="!showAddTask && !showUpdateTask">
+      <table class="tasks-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Activity Name</th>
+            <th>Project</th>
+            <th>User</th>
+            <th>Date</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let task of tasks">
+            <td data-label="ID">{{ task.id }}</td>
+            <td data-label="Activity Name">{{ task.activityName }}</td>
+            <td data-label="Project">{{ task.project.name }}</td>
+            <td data-label="User">{{ task.user.firstname }} {{task.user.lastname}}</td>
+            <td data-label="Date">{{ task.date}}</td>
+            <td data-label="Monday">{{ task.monday}}</td>
+            <td data-label="Tuesday">{{ task.tuesday}}</td>
+            <td data-label="Wednesday">{{ task.wednesday}}</td>
+            <td data-label="Thursday">{{ task.thursday}}</td>
+            <td data-label="Friday">{{ task.friday}}</td>
+            <td data-label="Actions" class="actions-column">
+              <button class="btn btn-update" (click)="toggleUpdateTask(task.id)">
+                <i class="feather icon-edit"></i>
+              </button>
+              <button class="btn btn-delete" (click)="deleteTask(task.id)">
+                <i class="feather icon-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

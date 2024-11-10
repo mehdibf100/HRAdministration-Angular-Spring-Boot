@@ -1,0 +1,31 @@
+<app-nav-bar-attendance-hr></app-nav-bar-attendance-hr>
+<div class="cont">
+  <div class="attendance">
+    <div class="punchIn" *ngIf="test=='false'">
+    <p class="title">Punch In</p>
+    <p class="date">Date <span>{{ date }}</span></p>
+    <p class="time">Time <span>{{ time }}</span> HH:MM</p>
+    <div class="group">
+      <input required="" type="text" class="input">
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Note</label>
+    </div>
+    <button class="btn btn-info" (click)="PunchIn()">IN</button>
+  </div>
+  <div class="punchOut" *ngIf="test=='true'">
+    <p class="title">Punch Out</p>
+    <p class="date">Punch In <span>{{ attendanceToday.start_time}}</span></p>
+    <p class="date" *ngIf="attendanceToday.end_time!==null" >Punch Out <span>{{attendanceToday.end_time }}</span></p>
+    <p class="date">Date <span>{{ date }}</span></p>
+    <p class="time">Time Now <span>{{ time }}</span> HH:MM</p>
+    <div class="group">
+      <input required="" type="text" class="input">
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Note</label>
+    </div>
+    <button id="btn" class="btn btn-info" *ngIf="attendanceToday.end_time===null"  (click)="PunchOut()">OUT</button>
+  </div>
+</div>
+</div>

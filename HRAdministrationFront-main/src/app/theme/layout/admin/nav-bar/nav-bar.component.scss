@@ -1,0 +1,39 @@
+.m-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+
+  .mobile-menu,
+  .header-mobile-collapse,
+  .mob-toggler {
+    cursor: pointer;
+  }
+
+  .b-brand {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      height: 40px;
+      width: auto; 
+      max-width: 300px; 
+    }
+
+    .logo-thumb {
+      height: 30px; 
+      width: auto; 
+      max-width: 30px; 
+    }
+  }
+}
+
+.collapse.navbar-collapse {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .me-auto {
+    margin-right: auto;
+  }
+}

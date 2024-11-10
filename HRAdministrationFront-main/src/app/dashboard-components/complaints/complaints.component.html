@@ -1,0 +1,59 @@
+<div class="complaints-container">
+    <div class="header">
+      <h2>Complaints</h2>
+      <button class="btn btn-add" (click)="toggleAddComplaint()">
+        {{ showAddComplaint ? 'Back to Complaints' : 'Add Complaint' }}
+      </button>
+    </div>
+  
+    <div *ngIf="showAddComplaint">
+      <app-add-complaint (closeAddComplaint)="onAddComplaintClose()"></app-add-complaint>
+    </div>
+  
+    <div *ngIf="showUpdateComplaint && complaintIdToUpdate !== undefined">
+      <app-update-complaint
+        [complaintId]="complaintIdToUpdate"
+        (closeUpdateComplaint)="onUpdateComplaintClose()">
+      </app-update-complaint>
+    </div>
+  
+    <div *ngIf="!showAddComplaint && !showUpdateComplaint">
+      <table class="complaints-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Created Date</th>
+            <th>Updated Date</th>
+            <th>Resolution Date</th>
+            <th>Filed By</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let complaint of complaints">
+            <td data-label="ID">{{ complaint.id }}</td>
+            <td data-label="Title">{{ complaint.title }}</td>
+            <td data-label="Description">{{ complaint.description }}</td>
+            <td data-label="Status">{{ complaint.status }}</td>
+            <td data-label="Created Date">{{ complaint.createdDate }}</td>
+            <td data-label="Updated Date">{{ complaint.updatedDate}}</td>
+            <td data-label="Resolution Date">{{ complaint.resolutionDate}}</td>
+            <td data-label="Filed By">{{ complaint.filedBy.firstname }} {{ complaint.filedBy.lastname }}</td>
+            <td data-label="Actions" class="actions-column">
+              <button class="btn btn-update" (click)="toggleUpdateComplaint(complaint.id)">
+                <i class="feather icon-edit"></i>
+              </button>
+              <button class="btn btn-delete" (click)="deleteComplaint(complaint.id)">
+                <i class="feather icon-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+

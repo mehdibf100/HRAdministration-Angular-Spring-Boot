@@ -1,0 +1,26 @@
+<div class="update-project-container">
+    <h2>Update Project</h2>
+    <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
+      <div class="form-group">
+        <label for="projectName">Project Name</label>
+        <input
+          type="text"
+          id="projectName"
+          [(ngModel)]="projectName"
+          name="projectName"
+          required
+          #projectNameInput="ngModel"
+          [class.invalid]="projectNameInput.invalid && (projectNameInput.dirty || projectNameInput.touched)"
+        />
+        <div *ngIf="projectNameInput.invalid && (projectNameInput.dirty || projectNameInput.touched)" class="error-message">
+          Project name is required
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn btn-cancel" (click)="onCancel()">Cancel</button>
+        <button type="submit" class="btn btn-save" [disabled]="projectForm.invalid">Save</button>
+      </div>
+    </form>
+  </div>
+
+  

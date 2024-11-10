@@ -1,0 +1,45 @@
+<div class="attendances-container">
+    <div class="header">
+      <h2>Attendances</h2>
+    </div>
+  
+    <div *ngIf="showUpdateAttendance && attendanceIdToUpdate !== undefined">
+      <app-update-attendance
+        [attendanceId]="attendanceIdToUpdate"
+        (closeUpdateAttendance)="onUpdateAttendanceClose()">
+      </app-update-attendance>
+    </div>
+  
+    <div *ngIf="!showAddAttendance && !showUpdateAttendance">
+      <table class="attendances-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>User</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let attendance of attendances">
+            <td data-label="ID">{{ attendance.attendance_id }}</td>
+            <td data-label="Date">{{ attendance.date }}</td>
+            <td data-label="Start Time">{{ attendance.start_time }}</td>
+            <td data-label="End Time">{{ attendance.end_time }}</td>
+            <td data-label="User">{{ attendance.user.firstname }} {{ attendance.user.lastname }}</td>
+            <td data-label="Actions" class="actions-column">
+              <button class="btn btn-update" (click)="toggleUpdateAttendance(attendance.attendance_id)">
+                <i class="feather icon-edit"></i>
+              </button>
+              <button class="btn btn-delete" (click)="deleteAttendance(attendance.attendance_id)">
+                <i class="feather icon-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

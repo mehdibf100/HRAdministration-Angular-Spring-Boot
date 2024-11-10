@@ -1,0 +1,54 @@
+<div class="leave-requests-container">
+    <div class="header">
+      <h2>Leave Requests</h2>
+    </div>
+  
+    <div *ngIf="showUpdateLeaveRequest && leaveRequestIdToUpdate !== undefined">
+      <app-update-leaverequest
+        [leaveRequestId]="leaveRequestIdToUpdate"
+        (closeUpdateLeaveRequest)="onUpdateLeaveRequestClose()">
+      </app-update-leaverequest>
+    </div>
+  
+    <div *ngIf="!showAddLeaveRequest && !showUpdateLeaveRequest">
+      <table class="leave-requests-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Reason</th>
+            <th>User</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let leaveRequest of leaveRequests">
+            <td data-label="ID">{{ leaveRequest.requestId }}</td>
+            <td data-label="Start Date">{{ leaveRequest.startDate }}</td>
+            <td data-label="End Date">{{ leaveRequest.endDate }}</td>
+            <td data-label="Reason">{{ leaveRequest.reason }}</td>
+            <td data-label="User">{{ leaveRequest.user.firstname }} {{ leaveRequest.user.lastname }}</td>
+            <td data-label="Status">
+            {{ leaveRequest.status }}</td>
+            <td data-label="Actions" class="actions-column">
+              <button class="btn btn-update" (click)="toggleUpdateLeaveRequest(leaveRequest.requestId)">
+                <i class="feather icon-edit"></i>
+              </button>
+              <button class="btn btn-accept" (click)="acceptLeaveRequest(leaveRequest.requestId)">
+                Accept
+              </button>
+              <button class="btn btn-deny" (click)="denyLeaveRequest(leaveRequest.requestId)">
+                Deny
+              </button>
+              <button class="btn btn-delete" (click)="deleteLeaveRequest(leaveRequest.requestId)">
+                <i class="feather icon-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

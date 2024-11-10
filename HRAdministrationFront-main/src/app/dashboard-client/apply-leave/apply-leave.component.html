@@ -1,0 +1,39 @@
+<app-nav-bar-menu-leave></app-nav-bar-menu-leave>
+<div class="cont">
+  <div class="ApplyLeave">
+    <h3>Apply Leave</h3>
+    <p>Please provide imformation about your leave</p>
+    <form>
+      <div class="form">
+      <div>
+      <label for="leaveType">Leave Type:</label><br>
+      <select  class="TypeLeave" [(ngModel)]="typeLeave" [ngModelOptions]="{standalone: true}">
+        <option class="empty" value="Choose leave type...">Choose leave type...</option>
+        <option value="ANNUAL">Annual</option>
+        <option value="MEDICAL">Medicl</option>
+        <option value="HOSPITALIZATION">Hospitalization</option>
+        <option value="COMPASSIONATE">COMPASSIONATE</option>
+        <option value="MARRIAGE">MARRIAGE</option>
+        <option value="MATERNITY">MATERNITY</option>
+        <option value="REPLACEMENT">Replacemment</option>
+      </select></div>
+      <div>
+        <label for="leaveDate">Leave Date:</label><br>
+       <input type="date" placeholder="Select leave date" [(ngModel)]="startDate"  class="TypeLeave" [ngModelOptions]="{standalone: true}"></div>
+        <div>
+          <label for="leavePeriod">Leave period:</label><br>
+          <select name="" class="TypeLeave" [(ngModel)]="period" [ngModelOptions]="{standalone: true}">
+            <option value="">Period of leave</option>
+            <option value="1">1 day</option>
+            <option value="3">3 day</option>
+            <option value="7">1 week</option>
+            <option value="14">2 weeks</option>
+          </select></div>
+          </div>
+          <div>
+            <label for="leavePeriod">Notes</label>
+            <textarea class="reason" [(ngModel)]="reason" [ngModelOptions]="{standalone: true}" name="" id="" cols="60" rows="4" placeholder="Leave reason..."></textarea><br><div class="Apply"><button (click)="calculDate()" class="create">Apply leave</button></div>
+          </div>
+    </form>
+  </div>
+</div>

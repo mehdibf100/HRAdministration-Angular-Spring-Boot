@@ -1,0 +1,106 @@
+<app-nav-bar-menu></app-nav-bar-menu>
+<div class="cont">
+  <div class="timeSheet">
+    <p class="title">Weekly timeSheet </p>
+    <p class="date">
+      This week, {{ weekDays.monday }} - {{ weekDays.friday }} 2024 
+      <input type="date" [(ngModel)]="selectedDate" (change)="onDateChange($event)" [ngModelOptions]="{standalone: true}"/> 
+      <i (click)="Minus()" class="fa-solid fa-arrow-left"></i> 
+      <i (click)="Plus()" class="fa-solid fa-arrow-right"></i>
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#36546c">
+          <path d="M360-840v-80h240v80H360Zm80 440h80v-240h-80v240Zm40 320q-74 0-139.5-28.5T226-186q-49-49-77.5-114.5T120-440q0-74 28.5-139.5T226-694q49-49 114.5-77.5T480-800q62 0 119 20t107 58l56-56 56 56-56 56q38 50 58 107t20 119q0 74-28.5 139.5T734-186q-49 49-114.5 77.5T480-80Zm0-80q116 0 198-82t82-198q0-116-82-198t-198-82q-116 0-198 82t-82 198q0 116 82 198t198 82Zm0-280Z"/>
+        </svg>
+        Switch to timer
+      </span>
+    </p>
+    <hr>
+    <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <th colspan="5">PROJECT</th>
+            <th colspan="3">TASK</th>
+            <th colspan="3">
+              <input type="text" [value]="isHoliday('monday') ? getHolidayName('monday') : weekDays.monday" placeholder="Monday" [disabled]="isHoliday('monday')">
+            </th>
+            <th colspan="3">
+              <input type="text" [value]="isHoliday('tuesday') ? getHolidayName('tuesday') : weekDays.tuesday" placeholder="Tuesday" [disabled]="isHoliday('tuesday')">
+            </th>
+            <th colspan="3">
+              <input type="text" [value]="isHoliday('wednesday') ? getHolidayName('wednesday') : weekDays.wednesday" placeholder="Wednesday" [disabled]="isHoliday('wednesday')">
+            </th>
+            <th colspan="3">
+              <input type="text" [value]="isHoliday('thursday') ? getHolidayName('thursday') : weekDays.thursday" placeholder="Thursday" [disabled]="isHoliday('thursday')">
+            </th>
+            <th colspan="3">
+              <input type="text" [value]="isHoliday('friday') ? getHolidayName('friday') : weekDays.friday" [disabled]="isHoliday('friday')">
+            </th>
+            <th>Total</th>
+            <th colspan="3" class="del"></th>
+          </tr>
+        </thead>
+        <tbody id="tr1">
+          <tr *ngFor="let task of tasks">
+            <td colspan="5">
+              <select name="">
+                <option [(ngModel)]="task.project.id" [ngModelOptions]="{standalone: true}" [value]="task.project?.name">
+                  {{ task.project?.name ? task.project.name : 'Select Project' }}
+                </option>
+              </select>
+            </td>
+            <td colspan="3">
+              <input type="text" [(ngModel)]="task.activityName" [ngModelOptions]="{standalone: true}">
+            </td>
+            <td colspan="3" [ngClass]="{'holiday': isHoliday('monday')}">
+              <input class="task-hours" type="text" [(ngModel)]="task.monday" [ngModelOptions]="{standalone: true}" [disabled]="isHoliday('monday')">
+            </td>
+            <td colspan="3" [ngClass]="{'holiday': isHoliday('tuesday')}">
+              <input class="task-hours" type="text" [(ngModel)]="task.tuesday" [ngModelOptions]="{standalone: true}" [disabled]="isHoliday('tuesday')">
+            </td>
+            <td colspan="3" [ngClass]="{'holiday': isHoliday('wednesday')}">
+              <input class="task-hours" type="text" [(ngModel)]="task.wednesday" [ngModelOptions]="{standalone: true}" [disabled]="isHoliday('wednesday')">
+            </td>
+            <td colspan="3" [ngClass]="{'holiday': isHoliday('thursday')}">
+              <input class="task-hours" type="text" [(ngModel)]="task.thursday" [ngModelOptions]="{standalone: true}" [disabled]="isHoliday('thursday')">
+            </td>
+            <td colspan="3" [ngClass]="{'holiday': isHoliday('friday')}">
+              <input class="task-hours" type="text" [(ngModel)]="task.friday" [ngModelOptions]="{standalone: true}" [disabled]="isHoliday('friday')">
+            </td>
+            <td class="total1">
+              <input type="text" [value]="getTotalHours(task)" disabled aria-label="Total hours spent this week" title="Total hours spent this week">
+            </td>
+            <td colspan="3" id="del" class="del">
+              <button class="btn" (click)="deleteTask(task.id)">
+                <svg viewBox="0 0 15 17.5" height="17.5" width="15" xmlns="http://www.w3.org/2000/svg" class="icon">
+                  <path transform="translate(-2.5 -1.25)" d="M15,18.75H5A1.251,1.251,0,0,1,3.75,17.5V5H2.5V3.75h15V5H16.25V17.5A1.251,1.251,0,0,1,15,18.75ZM5,5V17.5H15V5Zm7.5,10H11.25V7.5H12.5V15ZM8.75,15H7.5V7.5H8.75V15ZM12.5,2.5h-5V1.25h5V2.5Z" id="Fill"></path>
+                </svg>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="total">
+            <td colspan="5"></td>
+            <td colspan="3"><strong>Total:</strong></td>
+            <td colspan="3"><input type="text" [value]="getTotalDayHours('monday')" disabled></td>
+            <td colspan="3"><input type="text" [value]="getTotalDayHours('tuesday')" disabled></td>
+            <td colspan="3"><input type="text" [value]="getTotalDayHours('wednesday')" disabled></td>
+            <td colspan="3"><input type="text" [value]="getTotalDayHours('thursday')" disabled></td>
+            <td colspan="3"><input type="text" [value]="getTotalDayHours('friday')" disabled></td>
+            <td><input type="text" [value]="getTotalWeekHours()" disabled></td>
+          </tr>
+        </tfoot>
+      </table>
+      <p>
+        <button class="btn-add" (click)="Add()">
+          <i class="fa-solid fa-plus fa-rotate-by" style="color: #7da8c9; --fa-rotate-angle: 1deg;"></i>
+          Add timeSheet row
+        </button>
+      </p>
+      <p class="save">
+        <button (click)="save()" id="save">Save <i class="fa-solid fa-floppy-disk" style="color:white;"></i></button>
+      </p>
+    </div>
+  </div>
+</div>

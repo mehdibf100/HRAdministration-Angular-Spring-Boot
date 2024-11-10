@@ -1,0 +1,29 @@
+<div class="update-employee-container">
+  <h2>Update Employee</h2>
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="firstname">First Name</label>
+      <input id="firstname" formControlName="firstname" type="text" />
+    </div>
+
+    <div class="form-group">
+      <label for="lastname">Last Name</label>
+      <input id="lastname" formControlName="lastname" type="text" />
+    </div>
+
+    <div class="form-group">
+      <label for="job">Job Title</label>
+      <input id="job" formControlName="job" type="text" />
+    </div>
+    <div class="form-group">
+      <label for="baseSalary">Base Salary</label>
+      <input id="baseSalary" formControlName="baseSalary" type="text" />
+    </div>
+
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" [disabled]="!employeeForm.valid">Update</button>
+      <button type="button" (click)="cancel()" class="btn btn-secondary">Cancel</button>
+    </div>
+  </form>
+</div>

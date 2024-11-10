@@ -1,0 +1,42 @@
+<app-nav-bar-menu-leave-hr></app-nav-bar-menu-leave-hr>
+<div *ngIf="leaveRequests.length > 0; else noRequests">
+    <table class="attendance-table">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Reason</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let request of leaveRequests">
+          <td>{{ request.user.firstname }} {{ request.user.lastname }}</td>
+          <td>{{ request.reason }}</td>
+          <td>{{ request.startDate | date: 'mediumDate' }}</td>
+          <td>{{ request.endDate | date: 'mediumDate' }}</td>
+          <td>{{ request.status }}</td>
+          <td>            <button 
+              *ngIf="request.status === 'PENDING'" 
+              (click)="approveLeaveRequest(request.requestId)" 
+              class="approve-btn">
+              Approve
+            </button>
+            <button 
+              *ngIf="request.status === 'PENDING'" 
+              (click)="denyLeaveRequest(request.requestId)" 
+              class="deny-btn">
+              Deny
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <ng-template #noRequests>
+    <p>No leave requests found.</p>
+  </ng-template>
+  

@@ -1,0 +1,25 @@
+<app-nav-bar-menu-hr></app-nav-bar-menu-hr>
+<div class="employee-container">
+  <div class="employee-card" *ngFor="let employee of employees">
+    <img [src]="employee.displayPictureFilename || 'https://cognition.ens.fr/sites/cognition.ens.fr/files/styles/300x300/public/default_images/user-gen_0.png?itok=bmm9X_ff'" alt="{{ employee.firstname }}" class="employee-image" />
+    <div class="employee-details">
+      <h3>{{ employee.firstname }} {{ employee.lastname }}</h3>
+      <p>{{ employee.job }}</p>
+      <div class="employee-actions">
+        <button (click)="toggleUpdateEmployee(employee.id)" class="btn btn-primary">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button *ngIf="employee.id" (click)="deleteEmployee(employee.id)" class="btn btn-danger">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showUpdateEmployee && employeeIdToUpdate !== undefined">
+  <app-update-employee-hr
+    [employeeId]="employeeIdToUpdate"
+    (closeUpdateEmployee)="onUpdateEmployeeClose()">
+  </app-update-employee-hr>
+</div>

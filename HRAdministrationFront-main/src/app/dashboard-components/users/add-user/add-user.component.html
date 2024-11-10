@@ -1,0 +1,145 @@
+<div class="add-user-container">
+    <h2>Add User</h2>
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div class="form-group">
+        <label for="firstname">First Name</label>
+        <input
+          type="text"
+          id="firstname"
+          [(ngModel)]="user.firstname"
+          name="firstname"
+          required
+          #firstnameInput="ngModel"
+          [class.invalid]="firstnameInput.invalid && (firstnameInput.dirty || firstnameInput.touched)"
+        />
+        <div *ngIf="firstnameInput.invalid && (firstnameInput.dirty || firstnameInput.touched)" class="error-message">
+          First name is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="lastname">Last Name</label>
+        <input
+          type="text"
+          id="lastname"
+          [(ngModel)]="user.lastname"
+          name="lastname"
+          required
+          #lastnameInput="ngModel"
+          [class.invalid]="lastnameInput.invalid && (lastnameInput.dirty || lastnameInput.touched)"
+        />
+        <div *ngIf="lastnameInput.invalid && (lastnameInput.dirty || lastnameInput.touched)" class="error-message">
+          Last name is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="user.email"
+          name="email"
+          required
+          email
+          #emailInput="ngModel"
+          [class.invalid]="emailInput.invalid && (emailInput.dirty || emailInput.touched)"
+        />
+        <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="error-message">
+          <div *ngIf="emailInput.errors?.['required']">Email is required</div>
+          <div *ngIf="emailInput.errors?.['email']">Invalid email format</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="user.password"
+          name="password"
+          required
+          #passwordInput="ngModel"
+          [class.invalid]="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)"
+        />
+        <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="error-message">
+          Password is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="job">Job</label>
+        <input
+          type="text"
+          id="job"
+          [(ngModel)]="user.job"
+          name="job"
+          required
+          #jobInput="ngModel"
+          [class.invalid]="jobInput.invalid && (jobInput.dirty || jobInput.touched)"
+        />
+        <div *ngIf="jobInput.invalid && (jobInput.dirty || jobInput.touched)" class="error-message">
+          Job title is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        
+        <label for="dateJoined">Date Joined</label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          id="dateJoined"
+          [(ngModel)]="user.datejoined"
+          name="dateJoined"
+          required
+          #dateJoinedInput="ngModel"
+          [class.invalid]="dateJoinedInput.invalid && (dateJoinedInput.dirty || dateJoinedInput.touched)"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker" class="datepicker-icon"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <div *ngIf="dateJoinedInput.invalid && (dateJoinedInput.dirty || dateJoinedInput.touched)" class="error-message">
+          Date joined is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="baseSalary">Base Salary</label>
+        <input
+          type="number"
+          id="baseSalary"
+          [(ngModel)]="user.baseSalary"
+          name="baseSalary"
+          required
+          #baseSalaryInput="ngModel"
+          [class.invalid]="baseSalaryInput.invalid && (baseSalaryInput.dirty || baseSalaryInput.touched)"
+        />
+        <div *ngIf="baseSalaryInput.invalid && (baseSalaryInput.dirty || baseSalaryInput.touched)" class="error-message">
+          Base salary is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="role">Role</label>
+        <select
+          id="role"
+          [(ngModel)]="user.role"
+          name="role"
+          required
+          #roleInput="ngModel"
+          [class.invalid]="roleInput.invalid && (roleInput.dirty || roleInput.touched)"
+        >
+          <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+        </select>
+        <div *ngIf="roleInput.invalid && (roleInput.dirty || roleInput.touched)" class="error-message">
+          Role is required
+        </div>
+      </div>
+  
+      <div class="form-actions">
+        <button type="button" class="btn btn-cancel" (click)="onCancel()">Cancel</button>
+        <button type="submit" class="btn btn-save" [disabled]="userForm.invalid">Save</button>
+      </div>
+    </form>
+  </div>
+  

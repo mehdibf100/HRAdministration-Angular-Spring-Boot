@@ -1,0 +1,40 @@
+<app-nav-bar-attendances></app-nav-bar-attendances>
+<div class="attendance-list-container">
+  <div class="filter-section">
+    <label for="monthFilter">Filter by Month:</label>
+    <select id="monthFilter" [(ngModel)]="selectedMonth" (change)="onMonthChange()">
+      <option value="">All Months</option>
+      <option *ngFor="let month of months" [value]="month.value">{{ month.name }}</option>
+    </select>
+  </div>
+
+  <div class="table-section">
+    <h2>Attendance List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Punch In</th>
+          <th>Punch Out</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let attendance of filteredAttendances">
+          <td>{{ attendance.date | date: 'shortDate' }}</td>
+          <td>{{ attendance.start_time }}</td> <!-- Format if needed -->
+          <td>{{ attendance.end_time }}</td> <!-- Format if needed -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart-section">
+    <h2>Attendance Chart for {{ selectedMonthName }}</h2>
+    <canvas baseChart
+            [data]="attendanceChartData"
+            [labels]="attendanceChartData.labels"
+            [type]="attendanceChartType"
+            [options]="chartOptions">
+    </canvas>
+  </div>
+</div>

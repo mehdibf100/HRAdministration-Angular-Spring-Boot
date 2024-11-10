@@ -1,0 +1,59 @@
+<div class="add-complaint-container">
+    <h2>Add Complaint</h2>
+    <form (ngSubmit)="onSubmit()" #complaintForm="ngForm">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          id="title"
+          [(ngModel)]="complaint.title"
+          name="title"
+          required
+          #titleInput="ngModel"
+          [class.invalid]="titleInput.invalid && (titleInput.dirty || titleInput.touched)"
+        />
+        <div *ngIf="titleInput.invalid && (titleInput.dirty || titleInput.touched)" class="error-message">
+          Title is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          [(ngModel)]="complaint.description"
+          name="description"
+          required
+          #descriptionInput="ngModel"
+          [class.invalid]="descriptionInput.invalid && (descriptionInput.dirty || descriptionInput.touched)"
+        ></textarea>
+        <div *ngIf="descriptionInput.invalid && (descriptionInput.dirty || descriptionInput.touched)" class="error-message">
+          Description is required
+        </div>
+      </div>
+  
+  
+      <div class="form-group">
+        <label for="filedBy">Filed By</label>
+        <select
+          id="filedBy"
+          [(ngModel)]="complaint.filedBy.id"
+          name="filedBy"
+          required
+          #filedByInput="ngModel"
+          [class.invalid]="filedByInput.invalid && (filedByInput.dirty || filedByInput.touched)"
+        >
+          <option *ngFor="let user of users" [value]="user.id">{{ user.firstname }} {{ user.lastname }}</option>
+        </select>
+        <div *ngIf="filedByInput.invalid && (filedByInput.dirty || filedByInput.touched)" class="error-message">
+          User is required
+        </div>
+      </div>
+  
+      <div class="form-actions">
+        <button type="button" class="btn btn-cancel" (click)="onCancel()">Cancel</button>
+        <button type="submit" class="btn btn-save" [disabled]="complaintForm.invalid">Save</button>
+      </div>
+    </form>
+  </div>
+  

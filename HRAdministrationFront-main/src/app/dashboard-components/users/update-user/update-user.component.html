@@ -1,0 +1,96 @@
+<div class="update-user-container">
+    <h2>Update User</h2>
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div class="form-group">
+        <label for="firstname">First Name</label>
+        <input
+          type="text"
+          id="firstname"
+          [(ngModel)]="firstname"
+          name="firstname"
+          required
+          #firstnameInput="ngModel"
+          [class.invalid]="firstnameInput.invalid && (firstnameInput.dirty || firstnameInput.touched)"
+        />
+        <div *ngIf="firstnameInput.invalid && (firstnameInput.dirty || firstnameInput.touched)" class="error-message">
+          First name is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="lastname">Last Name</label>
+        <input
+          type="text"
+          id="lastname"
+          [(ngModel)]="lastname"
+          name="lastname"
+          required
+          #lastnameInput="ngModel"
+          [class.invalid]="lastnameInput.invalid && (lastnameInput.dirty || lastnameInput.touched)"
+        />
+        <div *ngIf="lastnameInput.invalid && (lastnameInput.dirty || lastnameInput.touched)" class="error-message">
+          Last name is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="datejoined">Date Joined</label>
+        <div class="date-picker-container">
+          <input
+            matInput
+            [matDatepicker]="picker"
+            type="text"
+            id="datejoined"
+            [(ngModel)]="datejoined"
+            name="datejoined"
+            required
+            #datejoinedInput="ngModel"
+            [class.invalid]="datejoinedInput.invalid && (datejoinedInput.dirty || datejoinedInput.touched)"
+          />
+          <mat-datepicker-toggle matSuffix [for]="picker" class="datepicker-icon"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </div>
+        <div *ngIf="datejoinedInput.invalid && (datejoinedInput.dirty || datejoinedInput.touched)" class="error-message">
+          Date joined is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="job">Job</label>
+        <input
+          type="text"
+          id="job"
+          [(ngModel)]="job"
+          name="job"
+          required
+          #jobInput="ngModel"
+          [class.invalid]="jobInput.invalid && (jobInput.dirty || jobInput.touched)"
+        />
+        <div *ngIf="jobInput.invalid && (jobInput.dirty || jobInput.touched)" class="error-message">
+          Job is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="baseSalary">Base Salary</label>
+        <input
+          type="number"
+          id="baseSalary"
+          [(ngModel)]="baseSalary"
+          name="baseSalary"
+          required
+          #baseSalaryInput="ngModel"
+          [class.invalid]="baseSalaryInput.invalid && (baseSalaryInput.dirty || baseSalaryInput.touched)"
+        />
+        <div *ngIf="baseSalaryInput.invalid && (baseSalaryInput.dirty || baseSalaryInput.touched)" class="error-message">
+          Base salary is required
+        </div>
+      </div>
+  
+      <div class="form-actions">
+        <button type="button" class="btn btn-cancel" (click)="onCancel()">Cancel</button>
+        <button type="submit" class="btn btn-save" [disabled]="userForm.invalid">Save</button>
+      </div>
+    </form>
+  </div>
+  

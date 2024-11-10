@@ -1,0 +1,47 @@
+<nav class="navBarMenu">
+    <div class="box">
+      <div>
+        <a [routerLink]="['/admin-hr-dashboard/home']" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}" class="btn1">
+          <img width="50%" src="https://img.icons8.com/?size=100&id=jPDM9Pv61iP5&format=png&color=000000" alt="">
+        </a>
+      </div>
+      <div class="line"></div>
+      <button class="back" type="button" (click)="goBack()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg></button>
+      <div class="bt-info"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a [routerLink]="['/admin-hr-dashboard/profile']" >My info</a>
+      </div>
+      <div class="bt-info" routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact: true}">
+        <a [routerLink]="['/admin-hr-dashboard/employees']" >Employees</a>
+      </div>
+      <div class="bt-info" routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact: true}">
+        <a [routerLink]="['/admin-hr-dashboard/leave']" >Leave</a>
+      </div>
+      <div class="bt-info" routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact: true}">
+        <a [routerLink]="['/admin-hr-dashboard/attendances-hr']" >Attendance</a>
+      </div>
+      <div class="bt-info" routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact: true}">
+        <a [routerLink]="['/admin-hr-dashboard/task']" >Task Track</a>
+      </div>
+      <div class="bt-info" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a [routerLink]="['/admin-hr-dashboard/Complaints']">Complaints</a>
+      </div>
+    </div>
+    <div class="logout"><button class="btn-logout"  (click)="logout()"><img src="https://static-00.iconduck.com/assets.00/logout-icon-2048x1708-5s1s9mb0.png" alt=""> Log Out</button> </div>
+    <div class="dropdown">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+  
+      </a>
+  
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
+  </nav>
+  

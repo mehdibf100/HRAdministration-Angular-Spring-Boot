@@ -1,0 +1,182 @@
+.cont {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  .attendance {
+    width: 90%; 
+    max-width: 900px; 
+    height: auto; 
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 30px; 
+    box-shadow: 2px 2px 2px 2px gainsboro;
+    font-family: 'Nunito';
+    box-sizing: border-box; 
+  }
+  
+  .title {
+    color: #64728c;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  
+  .date,
+  .time {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 16px;
+    color: rgb(129, 129, 129);
+    span {
+      margin-left: 20px;
+    }
+  }
+  
+  .group {
+    position: relative;
+    margin-top: 50px;
+  }
+  
+  .input {
+    font-size: 16px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%; 
+    max-width: 500px; 
+    border: none;
+    border-bottom: 1px solid #515151;
+    background: transparent;
+  }
+  
+  .input:focus {
+    outline: none;
+  }
+  
+  label {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+  }
+  
+  .input:focus ~ label,
+  .input:valid ~ label {
+    top: -20px;
+    font-size: 14px;
+    color: #5264AE;
+  }
+  
+  .bar {
+    position: relative;
+    display: block;
+    width: 100%; 
+    max-width: 500px; 
+  }
+  
+  .bar:before,
+  .bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #5264AE;
+    transition: 0.2s ease all;
+  }
+  
+  .bar:before {
+    left: 50%;
+  }
+  
+  .bar:after {
+    right: 50%;
+  }
+  
+  .input:focus ~ .bar:before,
+  .input:focus ~ .bar:after {
+    width: 50%;
+  }
+  
+  .highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  
+  .input:focus ~ .highlight {
+    animation: inputHighlighter 0.3s ease;
+  }
+  
+  @keyframes inputHighlighter {
+    from {
+      background: #5264AE;
+    }
+  
+    to {
+      width: 0;
+      background: transparent;
+    }
+  }
+  
+  .btn {
+    float: right;
+    margin-right: 20px;
+    width: 80px;
+    margin-top: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .cont {
+      margin-top: 20px;
+    }
+  
+    .attendance {
+      padding: 20px; 
+    }
+  
+    .title {
+      font-size: 14px;
+    }
+  
+    .date,
+    .time {
+      font-size: 11px;
+    }
+  
+    .input,
+    .bar {
+      width: 100%; 
+      max-width: none; 
+    }
+  
+    .btn {
+      float: none; 
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .attendance {
+      padding: 15px; 
+    }
+  
+    .title {
+      font-size: 12px;
+    }
+  
+    .date,
+    .time {
+      font-size: 10px;
+    }
+  }
+  

@@ -1,0 +1,147 @@
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.profile {
+  width: 100%; /* Responsive width */
+  max-width: 700px; /* Max width for larger screens */
+  min-width: 300px; /* Min width for smaller screens */
+  height: auto; /* Responsive height */
+  max-height: 400px; /* Max height for larger screens */
+  background-color: rgb(255, 255, 255);
+  border: 1px solid;
+  border-radius: 20px;
+  padding: 8px;
+  margin-top: 50px;
+  box-shadow: 2px 2px 2px 2px #d1d1d1;
+  border: none;
+}
+
+.icon-setting {
+  float: right;
+}
+
+hr {
+  margin: 7px 0 0 0;
+}
+
+.data-profile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Ensure spacing between elements */
+}
+
+.data-user {
+  margin-left: 50px;
+  display: block;
+}
+
+.fullName {
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
+.setting-icon {
+  margin-left: -30px;
+  margin-top: 30px;
+  background-color: white;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  border: none;
+  box-shadow: 2px 2px 2px 2px #d1d1d1;
+}
+
+.child {
+  box-shadow: 2px 2px 2px 2px #d1d1d1;
+  margin-bottom: 0;
+  width: 100%; /* Responsive width */
+  max-width: 300px; /* Max width for larger screens */
+  margin-left: auto; /* Center align on smaller screens */
+  margin-right: auto; /* Center align on smaller screens */
+  height: auto; /* Responsive height */
+  max-height: 400px; /* Max height for larger screens */
+  border-radius: 20px;
+  background-color: #ffffff;
+  padding: 10px;
+  margin-top: 50px;
+}
+
+.no-data {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.rounded-image {
+  border-radius: 50%;
+  width: 100%; /* Responsive width */
+  max-width: 250px; /* Max width for larger screens */
+  height: auto; /* Responsive height */
+  object-fit: cover;
+}
+@media (max-width: 767px) {
+  .profile {
+  max-width: 200px; /* Allow full width on smaller screens */
+  margin: 20px;
+  margin-left: 100px; /* Adjust margin for smaller screens */
+  margin-top: 50px;
+}
+#nav{
+  display: none;
+}
+.rounded-image{
+  width: 30%;
+  
+}
+.setting-icon{
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+}
+.child{
+  display: none;
+}
+}
+
+/* Responsive Media Queries */
+@media (min-width: 768px) and (max-width:1000px){
+  .profile {
+    max-width: 100%; /* Allow full width on smaller screens */
+    margin: 20px;
+    margin-left: 100px; /* Adjust margin for smaller screens */
+  }
+
+  .data-user,
+  .fullName {
+    margin-left: 20px; /* Reduce left margin for smaller screens */
+  }
+
+  .child {
+    margin-left: 0; /* Center align on smaller screens */
+    margin-right: 0; /* Center align on smaller screens */
+  }
+
+  .container {
+    padding: 0 20px; /* Add padding for smaller screens */
+  }
+}
+@media (min-width: 1001px) and (max-width:1600px){
+  .profile {
+    margin-left: 50px;
+    min-width: 500px; /* Max width for larger screens */
+    max-width: 700px;
+  }
+}
+@media (min-width: 1601px) and (max-width:1700px){
+  .profile {
+    margin-left: 100px;
+    min-width: 700px; /* Max width for larger screens */
+    max-width: 900px; /* Adjust margin for smaller screens */
+  }
+}
+
+
+

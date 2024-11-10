@@ -1,0 +1,131 @@
+.files-container {
+    padding: 20px;
+  
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+  
+      h2 {
+        margin: 0;
+      }
+  
+      .btn-add {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+        font-weight: bold;
+  
+        &:hover {
+          background-color: #0056b3;
+          transform: translateY(-2px);
+        }
+  
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+  
+  .files-table {
+    width: 100%;
+    border-collapse: collapse;
+  
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px 15px;
+      text-align: left;
+    }
+  
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+  
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  }
+  
+  .actions-column {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .btn {
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  
+    i {
+      margin-right: 5px;
+    }
+  
+    &-download {
+      background-color: #4CAF50;
+      color: white;
+    }
+  
+    &-delete {
+      background-color: #f44336;
+      color: white;
+    }
+  
+    &:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+  
+    &:active {
+      transform: translateY(0);
+    }
+  }
+  
+  @media (max-width: 800px) {
+    .files-table, .files-table thead, .files-table tbody, .files-table th, .files-table td, .files-table tr {
+      display: block;
+    }
+  
+    .files-table thead tr {
+      display: none;
+    }
+  
+    .files-table tr {
+      margin-bottom: 15px;
+      border-bottom: 2px solid #ddd;
+    }
+  
+    .files-table td {
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+    }
+  
+    .files-table td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      width: 50%;
+      padding-left: 15px;
+      font-weight: bold;
+      text-align: left;
+    }
+  
+    .actions-column {
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+  

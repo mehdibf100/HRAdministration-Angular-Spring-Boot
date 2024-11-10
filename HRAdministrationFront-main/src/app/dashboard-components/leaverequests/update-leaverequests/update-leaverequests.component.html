@@ -1,0 +1,57 @@
+<div class="update-leaverequest-container">
+    <h2>Update Leave Request</h2>
+    <form (ngSubmit)="onSubmit()" #leaveRequestForm="ngForm">
+      <div class="form-group">
+        <label for="startDate">Start Date</label>
+        <input
+          type="date"
+          id="startDate"
+          [(ngModel)]="startDate"
+          name="startDate"
+          required
+          #startDateInput="ngModel"
+          [class.invalid]="startDateInput.invalid && (startDateInput.dirty || startDateInput.touched)"
+        />
+        <div *ngIf="startDateInput.invalid && (startDateInput.dirty || startDateInput.touched)" class="error-message">
+          Start date is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="endDate">End Date</label>
+        <input
+          type="date"
+          id="endDate"
+          [(ngModel)]="endDate"
+          name="endDate"
+          required
+          #endDateInput="ngModel"
+          [class.invalid]="endDateInput.invalid && (endDateInput.dirty || endDateInput.touched)"
+        />
+        <div *ngIf="endDateInput.invalid && (endDateInput.dirty || endDateInput.touched)" class="error-message">
+          End date is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="reason">Reason</label>
+        <textarea
+          id="reason"
+          [(ngModel)]="reason"
+          name="reason"
+          required
+          #reasonInput="ngModel"
+          [class.invalid]="reasonInput.invalid && (reasonInput.dirty || reasonInput.touched)"
+        ></textarea>
+        <div *ngIf="reasonInput.invalid && (reasonInput.dirty || reasonInput.touched)" class="error-message">
+          Reason is required
+        </div>
+      </div>
+  
+      <div class="form-actions">
+        <button type="button" class="btn btn-cancel" (click)="onCancel()">Cancel</button>
+        <button type="submit" class="btn btn-save" [disabled]="leaveRequestForm.invalid">Save</button>
+      </div>
+    </form>
+  </div>
+  

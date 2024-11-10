@@ -1,0 +1,20 @@
+<app-nav-bar-complaints></app-nav-bar-complaints>
+<div class="cont">
+  <div class="complaints">
+    <h3>Wimbee</h3>
+    <div class="div"><p><span>Complaint Form</span><br>
+      Please fill out the following form with your complaint. We will review <br> your request and follow <br> up with you as soon as possible.</p></div>
+    <form>
+      <div class="form">
+        <div>
+          <label for="Complaints Title">Complaints Title</label><br>
+          <input type="text" class="title" [(ngModel)]="complaint.title" [ngModelOptions]="{standalone: true}" placeholder="Complaints Title...">
+        </div>
+          <div>
+            <label for="Description">Description</label>
+            <textarea class="reason" [(ngModel)]="complaint.description"  cols="60" rows="4" placeholder="Description..." [ngModelOptions]="{standalone: true}"></textarea><br><div class="Apply"><button (click)="sent()" class="sent">Sent</button></div>
+          </div>
+          </div>
+    </form>
+  </div>
+</div>

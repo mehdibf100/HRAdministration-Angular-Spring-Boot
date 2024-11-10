@@ -1,0 +1,72 @@
+<div class="add-task-container">
+    <h2>Add Task</h2>
+    <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
+      <div class="form-group">
+        <label for="activityName">Activity Name</label>
+        <input
+          type="text"
+          id="activityName"
+          [(ngModel)]="activityName"
+          name="activityName"
+          required
+          #activityNameInput="ngModel"
+          [class.invalid]="activityNameInput.invalid && (activityNameInput.dirty || activityNameInput.touched)"
+        />
+        <div *ngIf="activityNameInput.invalid && (activityNameInput.dirty || activityNameInput.touched)" class="error-message">
+          Activity name is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="taskDate">Task Date</label>
+        <input
+          type="date"
+          id="taskDate"
+          [(ngModel)]="taskDate"
+          name="taskDate"
+          required
+          #taskDateInput="ngModel"
+          [class.invalid]="taskDateInput.invalid && (taskDateInput.dirty || taskDateInput.touched)"
+        />
+        <div *ngIf="taskDateInput.invalid && (taskDateInput.dirty || taskDateInput.touched)" class="error-message">
+          Task date is required
+        </div>
+        </div>
+      <div class="form-group">
+        <label for="project">Project</label>
+        <select
+          id="project"
+          [(ngModel)]="selectedProject"
+          name="project"
+          required
+          #projectInput="ngModel"
+          [class.invalid]="projectInput.invalid && (projectInput.dirty || projectInput.touched)"
+        >
+          <option *ngFor="let project of projects" [value]="project.id">{{ project.name }}</option>
+        </select>
+        <div *ngIf="projectInput.invalid && (projectInput.dirty || projectInput.touched)" class="error-message">
+          Project is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="user">User</label>
+        <select
+          id="user"
+          [(ngModel)]="selectedUser"
+          name="user"
+          required
+          #userInput="ngModel"
+          [class.invalid]="userInput.invalid && (userInput.dirty || userInput.touched)"
+        >
+          <option *ngFor="let user of users" [value]="user.id">{{ user.firstname }} {{user.lastname}}</option>
+        </select>
+        <div *ngIf="userInput.invalid && (userInput.dirty || userInput.touched)" class="error-message">
+          User is required
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn btn-cancel" (click)="onCancel()">Cancel</button>
+        <button type="submit" class="btn btn-save" [disabled]="taskForm.invalid">Save</button>
+      </div>
+    </form>
+  </div>
+  

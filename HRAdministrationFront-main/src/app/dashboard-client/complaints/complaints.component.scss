@@ -1,0 +1,88 @@
+.cont{
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.complaints
+{
+  width: 600px;
+  height: 550px;
+  background-color:#ffffff;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px gainsboro;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.form{
+  display:flex;
+  flex-wrap: wrap;
+}
+.TypeLeave{
+  width:250px;
+  height: 50px;
+  border-radius: 20px;
+  padding: 15px;
+  background-color: #f2f2f2;
+  color: rgb(196, 196, 196);
+  border: none;
+  margin-left: 20px;
+}
+
+label{
+  font-weight: 600;
+  color: #747474;
+  padding: 15px 30px;
+}
+.reason
+{
+  border-radius: 20px;
+  padding: 15px;
+  background-color: #f2f2f2;
+  color: rgb(196, 196, 196);
+  border: none;
+  margin-left: 20px;
+}
+.Apply{
+  display:flex;
+  align-items: center;
+}
+.sent{
+  background-color:#00afb9 ;
+  color: #f2f2f2;
+  border-radius: 20px;
+  border:none;
+  height: 40px;
+  font-weight: 500;
+  width: 400px;
+  margin-top: 10px;
+  margin-left: 80px;
+}
+.complaints h3
+{
+  text-align: center;
+  color: #e59e6f;
+}
+.div{
+  background-color: #f7ede8;
+  width: 500px;
+  margin: 30px;
+  height: 100px;
+  text-align: center;
+  font-family:'Times New Roman', Times, serif;
+}
+.div span{
+  font-weight: 400;
+  font-size: 20px;
+}
+.title{
+  width:300px;
+  height: 50px;
+  border-radius: 20px;
+  padding: 15px;
+  background-color: #f2f2f2;
+  color: rgb(196, 196, 196);
+  border: none;
+  margin-left: 20px;
+}
